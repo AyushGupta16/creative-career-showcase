@@ -58,7 +58,7 @@ function ContactPage() {
       label: "Location",
       value: profile.location,
     },
-  ] as const;
+  ];
 
   return (
     <Layout>
