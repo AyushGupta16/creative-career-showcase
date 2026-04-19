@@ -23,7 +23,12 @@ export const Route = createFileRoute("/contact")({
 });
 
 function ContactPage() {
-  const items = [
+  const items: Array<{
+    icon: typeof Mail;
+    label: string;
+    value: string;
+    href?: string;
+  }> = [
     {
       icon: Mail,
       label: "Email",
