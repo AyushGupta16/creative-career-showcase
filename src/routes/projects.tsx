@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { Tag } from "@/components/site/Tag";
@@ -35,9 +36,11 @@ function ProjectsPage() {
 
         <div className="space-y-8">
           {projects.map((p, idx) => (
-            <article
+            <Link
               key={p.slug}
-              className="overflow-hidden rounded-xl border border-border bg-surface glow-on-hover"
+              to="/projects/$slug"
+              params={{ slug: p.slug }}
+              className="group block overflow-hidden rounded-xl border border-border bg-surface glow-on-hover"
             >
               <div className="grid md:grid-cols-[180px_1fr]">
                 <div className="flex flex-col items-start gap-3 border-b border-border/60 bg-surface-elevated p-6 md:border-b-0 md:border-r">
