@@ -23,6 +23,10 @@ export const Route = createFileRoute("/")({
         content:
           "ML Engineer focused on RAG, NLP, computer vision, and building real-world AI systems.",
       },
+      { property: "og:image", content: "/og-default.jpg" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "/og-default.jpg" },
     ],
   }),
   component: Home,
