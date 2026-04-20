@@ -175,7 +175,8 @@ function Home() {
                 transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
               >
               <Link
-                to="/projects"
+                to="/projects/$slug"
+                params={{ slug: p.slug }}
                 className="group flex h-full flex-col rounded-lg border border-border bg-surface p-6 glow-on-hover"
               >
                 <Tag variant="primary">{p.domain}</Tag>

@@ -41,7 +41,25 @@ export const systemExperience = [
   },
 ];
 
-export const projects = [
+export type Project = {
+  slug: string;
+  title: string;
+  domain: string;
+  stack: string[];
+  problem: string;
+  built: string;
+  highlights: string[];
+  outcome: string;
+  image: string;
+  year?: string;
+  role?: string;
+  overview?: string;
+  approach?: { title: string; desc: string }[];
+  results?: string[];
+  links?: { label: string; href: string }[];
+};
+
+export const projects: Project[] = [
   {
     slug: "persona-adaptive-agent",
     title: "Persona-Adaptive Customer Support Agent",
@@ -58,6 +76,34 @@ export const projects = [
     ],
     outcome:
       "Improved perceived response quality and reduced hand-off rate to human agents in test scenarios.",
+    image: "persona",
+    year: "2024",
+    role: "ML Engineer · Solo build",
+    overview:
+      "Most support bots speak in one tone to everyone. This project explores whether an LLM agent can read a user's intent and emotional state, then dynamically shift its persona — terse and technical for power users, calm and reassuring for frustrated customers — while staying grounded in a knowledge base via RAG.",
+    approach: [
+      {
+        title: "Persona detection layer",
+        desc: "A lightweight classifier on top of message embeddings tags each turn with intent (informational, transactional, complaint) and tone (neutral, frustrated, urgent).",
+      },
+      {
+        title: "RAG grounding",
+        desc: "Knowledge base chunks are embedded and stored in a vector index. Top-k passages are retrieved per turn and injected into the prompt to keep answers factual.",
+      },
+      {
+        title: "Persona-conditioned prompting",
+        desc: "A prompt template selects tone, verbosity, and structure based on detected persona — same facts, different delivery.",
+      },
+      {
+        title: "FastAPI service",
+        desc: "Wrapped behind a clean HTTP API with streaming responses, ready for integration into a chat UI or existing helpdesk.",
+      },
+    ],
+    results: [
+      "Higher perceived answer quality in blind A/B tests vs. a single-tone baseline",
+      "Reduced escalation rate on simulated frustrated-user transcripts",
+      "Add-a-persona time dropped to minutes by editing a single config",
+    ],
   },
   {
     slug: "cultural-artifact-recognition",
@@ -75,6 +121,34 @@ export const projects = [
     ],
     outcome:
       "Demonstrated practical CV-driven cultural preservation; presented as part of academic work.",
+    image: "artifact",
+    year: "2023",
+    role: "ML Engineer · Academic project",
+    overview:
+      "A computer-vision system that recognises cultural artifacts in images — bridging heritage preservation and modern object detection. Built end-to-end from dataset curation to a real-time inference pipeline.",
+    approach: [
+      {
+        title: "Dataset curation",
+        desc: "Collected and cleaned images of cultural artifacts, then annotated bounding boxes in YOLO format with consistent class labels.",
+      },
+      {
+        title: "Augmentation pipeline",
+        desc: "Applied flips, rotations, brightness shifts, and mosaic augmentation to improve generalisation on a small dataset.",
+      },
+      {
+        title: "YOLOv3 training & tuning",
+        desc: "Fine-tuned YOLOv3 with anchor recalculation for the dataset's object scales; tracked mAP and per-class precision/recall.",
+      },
+      {
+        title: "Inference pipeline",
+        desc: "OpenCV-based pipeline draws bounding boxes and confidence scores on input images in real time.",
+      },
+    ],
+    results: [
+      "Multi-class detection working reliably on held-out test images",
+      "Solid mAP across the curated artifact classes",
+      "Presented as part of academic coursework on applied AI for heritage",
+    ],
   },
   {
     slug: "churn-prediction",
@@ -92,6 +166,34 @@ export const projects = [
     ],
     outcome:
       "Delivered a model that outperformed baselines and produced an interpretable churn-driver report.",
+    image: "churn",
+    year: "2023",
+    role: "ML Engineer · Solo build",
+    overview:
+      "A classic but production-shaped churn pipeline: predict which customers are likely to leave, and — just as important — explain why, so the business can actually act on it.",
+    approach: [
+      {
+        title: "EDA & cleaning",
+        desc: "Profiled the dataset, handled missing values, and analysed churn rates across demographic and usage segments.",
+      },
+      {
+        title: "Feature engineering",
+        desc: "Derived tenure buckets, usage ratios, and contract-type encodings; one-hot and target encoding where appropriate.",
+      },
+      {
+        title: "Model bake-off",
+        desc: "Trained logistic regression, random forest, and gradient boosting with cross-validation; tuned hyperparameters via grid search.",
+      },
+      {
+        title: "Explainability",
+        desc: "Used feature importance and SHAP-style analysis to surface the strongest churn drivers in plain language.",
+      },
+    ],
+    results: [
+      "Best model beat the baseline on ROC-AUC and recall on the churn class",
+      "Identified contract type, tenure, and monthly charges as top churn drivers",
+      "Produced an interpretable report aimed at retention teams, not just data scientists",
+    ],
   },
 ];
 
