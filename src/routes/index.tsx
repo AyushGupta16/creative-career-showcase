@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Download, Sparkles } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { CornerFrame } from "@/components/site/CornerFrame";
 import { SectionHeading } from "@/components/site/SectionHeading";
@@ -63,6 +63,13 @@ function Home() {
               >
                 Get in touch
               </Link>
+              <a
+                href="/Ayush-Gupta-CV.pdf"
+                download
+                className="inline-flex h-11 items-center gap-2 rounded-md border border-border bg-surface px-5 font-mono text-xs font-semibold uppercase tracking-wider text-foreground transition-colors hover:border-primary hover:text-primary"
+              >
+                <Download className="h-4 w-4" /> Resume
+              </a>
             </div>
 
             <div className="mt-12 grid grid-cols-3 gap-6 border-t border-border/60 pt-8">
