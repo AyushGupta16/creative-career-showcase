@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 interface Props {
   eyebrow: string;
@@ -10,7 +11,11 @@ interface Props {
 
 export function SectionHeading({ eyebrow, title, description, className, align = "left" }: Props) {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       className={cn(
         "mb-10",
         align === "center" && "mx-auto max-w-2xl text-center",
@@ -26,6 +31,6 @@ export function SectionHeading({ eyebrow, title, description, className, align =
       {description && (
         <p className="mt-4 max-w-2xl text-base text-muted-foreground">{description}</p>
       )}
-    </div>
+    </motion.div>
   );
 }
