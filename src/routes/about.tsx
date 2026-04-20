@@ -4,6 +4,7 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 import { CornerFrame } from "@/components/site/CornerFrame";
 import portrait from "@/assets/portrait.png";
 import { profile, education, achievements } from "@/data/portfolio";
+import { Download } from "lucide-react";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -45,6 +46,15 @@ function AboutPage() {
               models — each as a small case study in turning a vague problem into a working
               product.
             </p>
+          </div>
+          <div className="mt-8">
+            <a
+              href="/Ayush-Gupta-CV.pdf"
+              download
+              className="inline-flex h-11 items-center gap-2 rounded-md bg-primary px-5 font-mono text-xs font-semibold uppercase tracking-wider text-primary-foreground shadow-glow transition-transform hover:-translate-y-0.5"
+            >
+              <Download className="h-4 w-4" /> Download Resume
+            </a>
           </div>
         </div>
         <div className="md:pt-16">
