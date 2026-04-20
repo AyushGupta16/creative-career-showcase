@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { CornerFrame } from "@/components/site/CornerFrame";
 import { Tag } from "@/components/site/Tag";
-import { projects } from "@/data/portfolio";
+import { projects, type Project } from "@/data/portfolio";
 import { projectImages } from "@/lib/project-images";
 
 export const Route = createFileRoute("/projects/$slug")({
@@ -40,7 +40,7 @@ export const Route = createFileRoute("/projects/$slug")({
 });
 
 function ProjectDetailPage() {
-  const { project } = Route.useLoaderData();
+  const { project } = Route.useLoaderData() as { project: Project };
   const idx = projects.findIndex((p) => p.slug === project.slug);
   const next = projects[(idx + 1) % projects.length];
   const image = projectImages[project.image];
