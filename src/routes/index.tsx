@@ -28,6 +28,11 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
+const heroItem = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+};
+
 function Home() {
   const allSkills = skills.flatMap((g) => g.items);
   return (
@@ -36,22 +41,39 @@ function Home() {
       <section className="relative overflow-hidden border-b border-border/60">
         <div className="absolute inset-0 grid-bg opacity-50" aria-hidden />
         <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-20 md:grid-cols-2 md:py-28">
-          <div className="flex flex-col justify-center fade-in-up">
-            <p className="font-mono text-xs uppercase tracking-[0.25em] text-primary">
+          <motion.div
+            className="flex flex-col justify-center"
+            initial="hidden"
+            animate="show"
+            variants={{
+              hidden: {},
+              show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+            }}
+          >
+            <motion.p
+              variants={heroItem}
+              className="font-mono text-xs uppercase tracking-[0.25em] text-primary"
+            >
               // {profile.title}
-            </p>
-            <h1 className="mt-4 text-5xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl">
+            </motion.p>
+            <motion.h1
+              variants={heroItem}
+              className="mt-4 text-5xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-6xl md:text-7xl"
+            >
               Building <span className="text-primary text-glow">intelligent</span>
               <br />
               systems, not just <br />
               models.
-            </h1>
-            <p className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg">
+            </motion.h1>
+            <motion.p
+              variants={heroItem}
+              className="mt-6 max-w-xl text-base text-muted-foreground sm:text-lg"
+            >
               {profile.tagline} I design and ship ML products end-to-end — from data and
               modelling to APIs and integration.
-            </p>
+            </motion.p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <motion.div variants={heroItem} className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/projects"
                 className="inline-flex h-11 items-center gap-2 rounded-md bg-primary px-5 font-mono text-xs font-semibold uppercase tracking-wider text-primary-foreground shadow-glow transition-transform hover:-translate-y-0.5"
@@ -71,19 +93,27 @@ function Home() {
               >
                 <Download className="h-4 w-4" /> Resume
               </a>
-            </div>
+            </motion.div>
 
-            <div className="mt-12 grid grid-cols-3 gap-6 border-t border-border/60 pt-8">
-              {stats.map((s) => (
-                <div key={s.label}>
+            <motion.div
+              variants={heroItem}
+              className="mt-12 grid grid-cols-3 gap-6 border-t border-border/60 pt-8"
+            >
+              {stats.map((s, i) => (
+                <motion.div
+                  key={s.label}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.7 + i * 0.1, ease: "easeOut" }}
+                >
                   <div className="text-3xl font-bold text-primary">{s.value}</div>
                   <div className="mt-1 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
                     {s.label}
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           <div className="flex items-center justify-center">
             <div className="relative">
