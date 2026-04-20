@@ -19,6 +19,9 @@ export const Route = createFileRoute("/projects/$slug")({
           { name: "description", content: loaderData.project.problem },
           { property: "og:title", content: `${loaderData.project.title} — Ayush Gupta` },
           { property: "og:description", content: loaderData.project.problem },
+          { property: "og:image", content: "/og-default.jpg" },
+          { name: "twitter:card", content: "summary_large_image" },
+          { name: "twitter:image", content: "/og-default.jpg" },
         ]
       : [{ title: "Project — Ayush Gupta" }],
   }),
