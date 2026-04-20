@@ -115,7 +115,12 @@ function Home() {
             </motion.div>
           </motion.div>
 
-          <div className="flex items-center justify-center">
+          <motion.div
+            className="flex items-center justify-center"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          >
             <div className="relative">
               <div className="absolute -inset-8 rounded-full bg-primary/20 blur-3xl" aria-hidden />
               <CornerFrame className="relative">
@@ -125,7 +130,12 @@ function Home() {
                   className="h-[420px] w-[340px] rounded-sm object-cover sm:h-[480px] sm:w-[380px]"
                 />
               </CornerFrame>
-              <div className="absolute -bottom-4 left-4 right-4 flex items-center justify-between rounded-md border border-border bg-surface/90 px-4 py-2 backdrop-blur">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 1, ease: "easeOut" }}
+                className="absolute -bottom-4 left-4 right-4 flex items-center justify-between rounded-md border border-border bg-surface/90 px-4 py-2 backdrop-blur"
+              >
                 <span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
                   status
                 </span>
@@ -136,9 +146,9 @@ function Home() {
                   </span>
                   Open to opportunities
                 </span>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
