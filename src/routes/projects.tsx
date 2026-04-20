@@ -94,10 +94,12 @@ function ProjectsPage() {
                         </li>
                       ))}
                     </ul>
+                  <div className="mt-6 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-primary">
+                    Read case study <ArrowRight className="h-3 w-3" />
                   </div>
                 </div>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </section>
