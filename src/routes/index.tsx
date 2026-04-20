@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Download, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 import { Layout } from "@/components/site/Layout";
 import { CornerFrame } from "@/components/site/CornerFrame";
 import { SectionHeading } from "@/components/site/SectionHeading";
@@ -135,11 +136,17 @@ function Home() {
             description="A few systems I've designed, built, and shipped end-to-end."
           />
           <div className="grid gap-6 md:grid-cols-3">
-            {projects.map((p) => (
-              <Link
+            {projects.map((p, i) => (
+              <motion.div
                 key={p.slug}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
+              >
+              <Link
                 to="/projects"
-                className="group flex flex-col rounded-lg border border-border bg-surface p-6 glow-on-hover"
+                className="group flex h-full flex-col rounded-lg border border-border bg-surface p-6 glow-on-hover"
               >
                 <Tag variant="primary">{p.domain}</Tag>
                 <h3 className="mt-4 text-xl font-semibold text-foreground group-hover:text-primary">
@@ -155,6 +162,7 @@ function Home() {
                   Case study <ArrowRight className="h-3 w-3" />
                 </div>
               </Link>
+              </motion.div>
             ))}
           </div>
         </div>
