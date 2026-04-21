@@ -10,7 +10,7 @@ export function Footer() {
             // ayush gupta
           </p>
           <p className="mt-1 text-sm text-foreground">
-            Machine Learning Engineer · Building real-world AI systems
+            ML Engineer focused on RAG, NLP, and real-world AI systems.
           </p>
         </div>
         <div className="flex items-center gap-3">

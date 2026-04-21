@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Github } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { Tag } from "@/components/site/Tag";
@@ -39,72 +39,89 @@ function ProjectsPage() {
 
         <div className="space-y-8">
           {projects.map((p, idx) => (
-            <Link
+            <div
               key={p.slug}
-              to="/projects/$slug"
-              params={{ slug: p.slug }}
-              className="group block overflow-hidden rounded-xl border border-border bg-surface glow-on-hover"
+              className="group relative overflow-hidden rounded-xl border border-border bg-surface glow-on-hover"
             >
-              <div className="grid md:grid-cols-[180px_1fr]">
-                <div className="flex flex-col items-start gap-3 border-b border-border/60 bg-surface-elevated p-6 md:border-b-0 md:border-r">
-                  <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-                    // {String(idx + 1).padStart(2, "0")}
-                  </span>
-                  <Tag variant="primary">{p.domain}</Tag>
-                </div>
-
-                <div className="p-6 md:p-8">
-                  <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                    {p.title}
-                  </h2>
-
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {p.stack.map((s) => (
-                      <Tag key={s}>{s}</Tag>
-                    ))}
+              <Link
+                to="/projects/$slug"
+                params={{ slug: p.slug }}
+                className="block"
+              >
+                <div className="grid md:grid-cols-[180px_1fr]">
+                  <div className="flex flex-col items-start gap-3 border-b border-border/60 bg-surface-elevated p-6 md:border-b-0 md:border-r">
+                    <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                      // {String(idx + 1).padStart(2, "0")}
+                    </span>
+                    <Tag variant="primary">{p.domain}</Tag>
                   </div>
 
-                  <div className="mt-6 grid gap-6 md:grid-cols-3">
-                    <div>
-                      <p className="font-mono text-[11px] uppercase tracking-wider text-primary">
-                        Problem
-                      </p>
-                      <p className="mt-2 text-sm text-muted-foreground">{p.problem}</p>
-                    </div>
-                    <div>
-                      <p className="font-mono text-[11px] uppercase tracking-wider text-primary">
-                        What I built
-                      </p>
-                      <p className="mt-2 text-sm text-muted-foreground">{p.built}</p>
-                    </div>
-                    <div>
-                      <p className="font-mono text-[11px] uppercase tracking-wider text-primary">
-                        Outcome
-                      </p>
-                      <p className="mt-2 text-sm text-muted-foreground">{p.outcome}</p>
-                    </div>
-                  </div>
+                  <div className="p-6 md:p-8">
+                    <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                      {p.title}
+                    </h2>
 
-                  <div className="mt-6">
-                    <p className="font-mono text-[11px] uppercase tracking-wider text-primary">
-                      Highlights
-                    </p>
-                    <ul className="mt-2 space-y-2">
-                      {p.highlights.map((h) => (
-                        <li key={h} className="flex gap-3 text-sm text-foreground">
-                          <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                          {h}
-                        </li>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {p.stack.map((s) => (
+                        <Tag key={s}>{s}</Tag>
                       ))}
-                    </ul>
-                  </div>
+                    </div>
 
-                  <div className="mt-6 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-primary">
-                    Read case study <ArrowRight className="h-3 w-3" />
+                    <div className="mt-6 grid gap-6 md:grid-cols-3">
+                      <div>
+                        <p className="font-mono text-[11px] uppercase tracking-wider text-primary">
+                          Problem
+                        </p>
+                        <p className="mt-2 text-sm text-muted-foreground">{p.problem}</p>
+                      </div>
+                      <div>
+                        <p className="font-mono text-[11px] uppercase tracking-wider text-primary">
+                          What I built
+                        </p>
+                        <p className="mt-2 text-sm text-muted-foreground">{p.built}</p>
+                      </div>
+                      <div>
+                        <p className="font-mono text-[11px] uppercase tracking-wider text-primary">
+                          Outcome
+                        </p>
+                        <p className="mt-2 text-sm text-muted-foreground">{p.outcome}</p>
+                      </div>
+                    </div>
+
+                    <div className="mt-6">
+                      <p className="font-mono text-[11px] uppercase tracking-wider text-primary">
+                        Highlights
+                      </p>
+                      <ul className="mt-2 space-y-2">
+                        {p.highlights.map((h) => (
+                          <li key={h} className="flex gap-3 text-sm text-foreground">
+                            <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                            {h}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="mt-6 flex flex-wrap items-center gap-4 font-mono text-xs uppercase tracking-wider">
+                      <span className="inline-flex items-center gap-2 text-primary">
+                        Case study <ArrowRight className="h-3 w-3" />
+                      </span>
+                      {p.repo && (
+                        <a
+                          href={p.repo}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="relative z-10 inline-flex items-center gap-1.5 text-muted-foreground hover:text-primary"
+                        >
+                          <Github className="h-3.5 w-3.5" /> GitHub
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </div>
           ))}
         </div>
       </section>
