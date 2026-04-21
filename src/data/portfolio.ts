@@ -17,9 +17,9 @@ export const profile = {
 };
 
 export const stats = [
-  { value: "3+", label: "ML Projects" },
-  { value: "6", label: "Certifications" },
-  { value: "2", label: "Internships" },
+  { value: "3", label: "Production-Oriented ML Projects" },
+  { value: "2", label: "Industry Internships" },
+  { value: "RAG · NLP · CV", label: "Systems Built" },
 ];
 
 export const systemExperience = [
@@ -57,6 +57,7 @@ export type Project = {
   approach?: { title: string; desc: string }[];
   results?: string[];
   links?: { label: string; href: string }[];
+  repo?: string;
 };
 
 export const projects: Project[] = [
@@ -75,8 +76,9 @@ export const projects: Project[] = [
       "Modular architecture so new personas and domains can be added quickly",
     ],
     outcome:
-      "Improved perceived response quality and reduced hand-off rate to human agents in test scenarios.",
+      "Improved response relevance and reduced need for manual escalation in test scenarios.",
     image: "persona",
+    repo: "https://github.com/AyushGupta16",
     year: "2024",
     role: "ML Engineer · Solo build",
     overview:
@@ -120,8 +122,9 @@ export const projects: Project[] = [
       "Real-time inference on images with bounding boxes and confidence scores",
     ],
     outcome:
-      "Demonstrated practical CV-driven cultural preservation; presented as part of academic work.",
+      "Built a working multi-class detector on a custom dataset with a real-time inference pipeline.",
     image: "artifact",
+    repo: "https://github.com/AyushGupta16",
     year: "2023",
     role: "ML Engineer · Academic project",
     overview:
@@ -165,8 +168,9 @@ export const projects: Project[] = [
       "Surfaced top churn drivers via feature importance for business action",
     ],
     outcome:
-      "Delivered a model that outperformed baselines and produced an interpretable churn-driver report.",
+      "Built and compared multiple models, selecting the best-performing approach for churn prediction and interpretability.",
     image: "churn",
+    repo: "https://github.com/AyushGupta16",
     year: "2023",
     role: "ML Engineer · Solo build",
     overview:
@@ -204,9 +208,9 @@ export const experience = [
     period: "2024 — Present",
     location: "Punjab, India",
     points: [
-      "Prototyped ML and GenAI workflows for internal research projects",
-      "Built RAG and NLP pipelines for grounded question answering",
-      "Collaborated with mentors on dataset design and evaluation strategies",
+      "Prototyped end-to-end ML and GenAI workflows for internal research projects",
+      "Built RAG and NLP pipelines for grounded, domain-specific question answering",
+      "Collaborated on dataset design and evaluation strategy for ML workflows",
     ],
   },
   {
@@ -215,9 +219,9 @@ export const experience = [
     period: "2023",
     location: "Remote",
     points: [
-      "Worked on supervised learning and data preprocessing pipelines",
-      "Implemented predictive models on real-world business datasets",
-      "Documented experiments and presented findings to mentors",
+      "Built and evaluated supervised ML pipelines on real-world datasets",
+      "Engineered features and preprocessing flows for predictive modelling tasks",
+      "Documented experiments and presented findings to engineering mentors",
     ],
   },
 ];
@@ -225,7 +229,7 @@ export const experience = [
 export const skills = [
   {
     group: "Core Languages",
-    items: ["Python", "C / C++", "Java", "SQL"],
+    items: ["Python", "C / C++", "Java"],
   },
   {
     group: "Machine Learning Foundations",
@@ -236,16 +240,16 @@ export const skills = [
     items: ["Neural Networks", "NLP", "Computer Vision", "GenAI / LLMs", "RAG"],
   },
   {
-    group: "Libraries / Frameworks / Tools",
+    group: "Libraries / Frameworks",
     items: ["scikit-learn", "TensorFlow", "PyTorch", "OpenCV", "Pandas", "NumPy", "FastAPI"],
   },
   {
-    group: "Systems / Workflow Tools",
-    items: ["Git", "Jupyter", "VS Code", "Anaconda", "Linux", "Windows"],
+    group: "Tools / Data",
+    items: ["SQL", "Git", "Linux", "Anaconda", "Google Colab", "Kaggle"],
   },
   {
-    group: "Platforms / Design Tools",
-    items: ["Google Colab", "Kaggle", "Canva", "Adobe Illustrator"],
+    group: "Editors / Misc",
+    items: ["Jupyter", "VS Code"],
   },
 ];
 
