@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Download, Sparkles } from "lucide-react";
+import { ArrowRight, Download, Github, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/site/Layout";
 import { CornerFrame } from "@/components/site/CornerFrame";
@@ -110,7 +110,7 @@ function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.7 + i * 0.1, ease: "easeOut" }}
                 >
-                  <div className="text-3xl font-bold text-primary">{s.value}</div>
+                  <div className="text-2xl font-bold leading-tight text-primary sm:text-3xl">{s.value}</div>
                   <div className="mt-1 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
                     {s.label}
                   </div>
@@ -188,25 +188,43 @@ function Home() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
               >
-              <Link
-                to="/projects/$slug"
-                params={{ slug: p.slug }}
-                className="group flex h-full flex-col rounded-lg border border-border bg-surface p-6 glow-on-hover"
-              >
-                <Tag variant="primary">{p.domain}</Tag>
-                <h3 className="mt-4 text-xl font-semibold text-foreground group-hover:text-primary">
-                  {p.title}
-                </h3>
-                <p className="mt-3 text-sm text-muted-foreground">{p.problem}</p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {p.stack.slice(0, 3).map((s) => (
-                    <Tag key={s}>{s}</Tag>
-                  ))}
+              <div className="group relative flex h-full flex-col rounded-lg border border-border bg-surface p-6 glow-on-hover">
+                <Link
+                  to="/projects/$slug"
+                  params={{ slug: p.slug }}
+                  className="flex flex-1 flex-col"
+                >
+                  <Tag variant="primary">{p.domain}</Tag>
+                  <h3 className="mt-4 text-xl font-semibold text-foreground group-hover:text-primary">
+                    {p.title}
+                  </h3>
+                  <p className="mt-3 text-sm text-muted-foreground">{p.problem}</p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {p.stack.slice(0, 3).map((s) => (
+                      <Tag key={s}>{s}</Tag>
+                    ))}
+                  </div>
+                </Link>
+                <div className="mt-6 flex items-center gap-4 font-mono text-xs uppercase tracking-wider">
+                  <Link
+                    to="/projects/$slug"
+                    params={{ slug: p.slug }}
+                    className="flex items-center gap-2 text-primary hover:underline"
+                  >
+                    Case study <ArrowRight className="h-3 w-3" />
+                  </Link>
+                  {p.repo && (
+                    <a
+                      href={p.repo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center gap-1.5 text-muted-foreground hover:text-primary"
+                    >
+                      <Github className="h-3.5 w-3.5" /> GitHub
+                    </a>
+                  )}
                 </div>
-                <div className="mt-6 flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-primary">
-                  Case study <ArrowRight className="h-3 w-3" />
-                </div>
-              </Link>
+              </div>
               </motion.div>
             ))}
           </div>
